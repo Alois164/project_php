@@ -1,0 +1,69 @@
+<?php class LoueurDTO {
+    private $id;
+    private $nom;
+    private $contact_email;
+    private $pays;
+    private $appels_sans_retour;
+    private $contact_tel;
+
+    public function __construct($id, $nom, $contact_email, $pays,$appels_sans_retour,$contact_tel) {
+        $this->id = $id;
+        $this->nom = $nom;
+        $this->contact_email = $contact_email;
+        $this->pays = $pays;
+        $this->appels_sans_retour = $appels_sans_retour;
+        $this->contact_tel = $contact_tel;
+    }
+
+    
+    public function getid() {
+        return $this->id;
+    }
+
+    public function getnom() {
+        return $this->nom;
+    }
+
+    public function getcontact_email() {
+        return $this->contact_email;
+    }
+
+    public function getpays() {
+        return $this->pays;
+    }
+    public function getappels_sans_retour(){
+        return $this->appels_sans_retour;
+    } 
+
+    public function getcontact_tel(){
+        return $this->contact_tel;
+    }
+
+
+    public function setnom($nom) {
+        $this->nom = $nom;
+    }
+
+    public function setcontact_email($contact_email) {
+        $this->contact_email = $contact_email;
+    }
+
+    public function setpays($pays) {
+        $this->pays = $pays;
+    }
+
+     public function setappels_sans_retour(){
+        $this->appels_sans_retour = $appels_sans_retour;
+     }
+
+     public function setcontacttel(){
+        $this->contact_tel = $contact_tel;
+     }
+
+    public function __toString() {
+        return "LoueurDTO [id: {$this->id}, nom: {$this->nom}, contact_email: {$this->contact_email}, pays: {$this->pays}], appels_sans_retour:
+         {$this->appels_sans_retour}, setcontact_tel:  {$this->contact_tel}";
+    }
+
+}
+?>
