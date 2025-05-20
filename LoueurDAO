@@ -1,0 +1,29 @@
+<?php
+require_once __DIR__ . '/../DTO/loueurDTO.php';
+
+class LoueurDAO {
+    private $pdo;
+
+    public function __construct($pdo) {
+        $this->pdo = $pdo;
+    }
+
+    public function getBycontact_email($contact_email) {
+        $stmt = $this->pdo->prepare("SELECT * FROM log WHERE contact_email = ?");
+        $stmt->execute([$contact_email]);
+        $row = $stmt->fetch();
+        if ($row) {
+            return new LoueurDTO($row['id'], $row['nom'], $row['contact_email'], $row['pays'],        
+                $row ['appels_sans_retour'], $row ['contact_tel']);
+        }
+        return null;
+    }
+
+    public function verifyPassword($contact_email, $password) {
+        $stmt = $this->pdo->prepare("SELECT mot_de_passe FROM log WHERE contact_email = ?");
+        $stmt->execute([$contact_email]);
+        $row = $stmt->fetch();
+        return $row && password_verify($password, $row['mot_de_passe']);
+    }
+}
+?>
